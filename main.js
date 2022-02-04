@@ -16,6 +16,7 @@ function onload(e) {
   const text = getTargetText(json);
   const result = esacpe(text);
   showResult(result);
+  copy();
 }
 
 function getJson(buffer) {
@@ -40,4 +41,9 @@ function esacpe(text) {
 
 function showResult(text) {
   resultArea.value = text;
+}
+
+function copy() {
+  resultArea.select();
+  document.execCommand('copy');
 }
