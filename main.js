@@ -1,4 +1,4 @@
-const taregtFilePath = '/ng/_name.json';
+const taregtFilePath = 'ng/_name.json';
 const uploadZip = document.getElementById('upload-zip');
 const resultArea = document.getElementById('result');
 
@@ -17,7 +17,7 @@ function onload(e) {
     const text = getTargetText(json);
     const result = esacpe(text);
     showResult(result);
-  } catch(error) {
+  } catch (error) {
     showResult(error);
   }
 }
@@ -25,6 +25,7 @@ function onload(e) {
 function getJson(buffer) {
   const uint8Array = new Uint8Array(buffer);
   const unzip = new Zlib.Unzip(uint8Array);
+  console.log(unzip.getFilenames());
   const palin = unzip.decompress(taregtFilePath);
   const jsonText = new TextDecoder().decode(palin);
   const json = JSON.parse(jsonText);
