@@ -12,11 +12,14 @@ function onChange(e) {
 }
 
 function onload(e) {
-  const json = getJson(e.target.result);
-  const text = getTargetText(json);
-  const result = esacpe(text);
-  showResult(result);
-  copy();
+  try {
+    const json = getJson(e.target.result);
+    const text = getTargetText(json);
+    const result = esacpe(text);
+    showResult(result);
+  } catch(error) {
+    showResult(error);
+  }
 }
 
 function getJson(buffer) {
